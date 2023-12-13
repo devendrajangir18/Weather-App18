@@ -37,7 +37,6 @@
             <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
             <ul class="menu">
               <li class="menu-item current-menu-item" id="omar"><a href="{% url 'home' %}">Home</a></li>
-              <li class="menu-item current-menu-item" id="about"><a href="{% url 'about' %}">About</a></li>
               <li class="menu-item current-menu-item" id="logout"><a href="{% url 'logout' %}">logout</a></li>
             </ul> <!-- .menu -->
           </div> <!-- .main-navigation -->
@@ -47,40 +46,15 @@
         </div>
       </div> <!-- .site-header -->
 
-      <div class="hero" data-bg-image="{% static 'images/banner.png' %}">
-        <div class="container">
-          <form action="{%url 'result'%}" class="find-location" method="post">
-            {% csrf_token%}
-            <input type="text" name="city" placeholder="Enter your city name..." required>
-            <input type="submit" value="Find">
-          </form>
-
-        </div>
+      <div class="about_container" style="position: relative; z-index: 1; max-width: 600px; margin: 0 auto;">
+        <p>WeatherSense is a web app that uses advanced machine learning algorithms to predict weather and later on future weathers based on the weather forecast data – precipitation, wind speed, humidity, temperature, maximum temperature, and cloud cover – over the next 7 days. 
+            The fundamental objective is to empower individuals, communities, and government agencies with real-time insights, enabling informed decision-making, disaster preparedness, and enhanced public safety.
+            This platform would transcend traditional weather forecasting applications by delivering comprehensive, real-time weather insights, ensuring users are informed, prepared, and ready to make informed decisions in a rapidly changing climate.
+            Hence, it would operate at the intersection of meteorology, data analysis, and user-friendly technology, designed to make vital information accessible, thereby enhancing individual and community resilience in the face of dynamic environmental conditions.</p>
       </div>
-        {% block content %}
-
-        {% endblock content %}
 
       <footer class="site-footer">
         <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <form action="#" class="subscribe-form">
-                <input type="text" placeholder="Enter your email..." required>
-                <input type="submit" value="Subscribe" required>
-              </form>
-            </div>
-            <div class="col-md-3 col-md-offset-1">
-              <div class="social-links">
-                <a href="#" target="_blank"><i class="fa fa-globe"></i></a>
-                <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
-                <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
-                <a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
-                <a target="_blank" href="#"><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-
           <p class="colophon">Copyright 2021, All rights reserved Weather Sense Team</p>
         </div>
       </footer> <!-- .site-footer -->

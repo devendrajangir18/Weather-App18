@@ -58,29 +58,14 @@ class RegistrationView(View):
             print(form.error_messages, form.errors)
         return render(request, self.template_name, {'form': form})
 
-# def registerUser(request):
-#     if request.method == "POST":
-#         first_name = request.POST.get('first_name')
-#         last_name = request.POST.get('last_name')
-#         username = request.POST.get('username')
-#         email = request.POST('email')
-#         password = request.POST.get('password')
-#         confirm_password = request.POST.get('confirm_password')
-        
-#         user = authenticate(request, first_name=first_name, last_name=last_name, username=username, email=email,  password=password, confirm_password=confirm_password,)
-#         # form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         # form = UserCreationForm()
-#     return render(request, 'registration/register.html')
     
 
 def logoutUser(request):
     logout(request)
     return redirect("/login")
+
+def about(request):
+    return render(request, 'about.html')
 
 def result(request):
     if request.method == "POST":
