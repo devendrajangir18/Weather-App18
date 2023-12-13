@@ -28,12 +28,17 @@
             </div>
           </a>
 
+          
           <!-- Default snippet for navigation -->
           <div class="main-navigation">
+          <div class="name" style="margin: 0px 15px; margin-bottom: 4px;">
+            Welcome {{request.user}}
+          </div>
             <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
             <ul class="menu">
               <li class="menu-item current-menu-item" id="omar"><a href="{% url 'home' %}">Home</a></li>
-
+              <li class="menu-item current-menu-item" id="about"><a href="{% url 'home' %}">About</a></li>
+              <li class="menu-item current-menu-item" id="logout"><a href="{% url 'logout' %}">logout</a></li>
             </ul> <!-- .menu -->
           </div> <!-- .main-navigation -->
 

@@ -4,6 +4,9 @@ from django.contrib.auth import logout, authenticate, login
 from weather_api.key import api_key
 import requests
 import math
+from django.views import View
+from weather_api.forms import RegistrationForm
+from django.contrib import messages
 # from .models import Social
 
 
@@ -31,11 +34,48 @@ def loginUser(request):
             login(request, user)
             return redirect("/weather_api/home.html")
         else:
-            print("here")
             # No backend authenticated the credentials
             return render(request, 'login.html')
         
     return render(request, 'login.html')
+
+class RegistrationView(View):
+    template_name = 'register.html'
+
+    def get(self, request):
+        form = RegistrationForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        print("here")
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('/login')  # Redirect to login page
+        else:
+            print(form.error_messages, form.errors)
+        return render(request, self.template_name, {'form': form})
+
+# def registerUser(request):
+#     if request.method == "POST":
+#         first_name = request.POST.get('first_name')
+#         last_name = request.POST.get('last_name')
+#         username = request.POST.get('username')
+#         email = request.POST('email')
+#         password = request.POST.get('password')
+#         confirm_password = request.POST.get('confirm_password')
+        
+#         user = authenticate(request, first_name=first_name, last_name=last_name, username=username, email=email,  password=password, confirm_password=confirm_password,)
+#         # form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         # form = UserCreationForm()
+#     return render(request, 'registration/register.html')
     
 
 def logoutUser(request):
